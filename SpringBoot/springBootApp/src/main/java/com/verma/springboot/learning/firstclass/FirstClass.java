@@ -1,4 +1,4 @@
-package com.verma.springboot.learning;
+package com.verma.springboot.learning.firstclass;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
