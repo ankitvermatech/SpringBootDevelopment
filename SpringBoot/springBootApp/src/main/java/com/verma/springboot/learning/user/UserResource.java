@@ -4,10 +4,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
-import static com.fasterxml.jackson.databind.jsonFormatVisitors.JsonValueFormat.URI;
 
 @RestController
 public class UserResource {
@@ -25,7 +23,11 @@ public class UserResource {
 
     @GetMapping("/users/{id}")
     public User retrieveUser(@PathVariable int id){
-        return service.findOne(id);
+        User user = service.findOne(id);
+        if(user==null){
+            throw new UserNotFoundException("Id: "+id);
+        }
+        return user;
     }
 
     @PostMapping("/users")

@@ -25,7 +25,7 @@ public class UserDaoService {
 
        public User findOne(int id){
               Predicate<User> findUser = user -> user.getId().equals(id);
-              return users.stream().filter(findUser).findFirst().get();
+              return users.stream().filter(findUser).findFirst().orElse(null);
        }
 
        public User saveUser(User user){
