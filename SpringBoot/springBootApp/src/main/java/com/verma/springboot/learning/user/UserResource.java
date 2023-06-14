@@ -1,6 +1,7 @@
 package com.verma.springboot.learning.user;
 
 import com.verma.springboot.learning.user.UserDefinedException.UserNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -39,5 +40,10 @@ public class UserResource {
                 buildAndExpand(savedUser.getId())
                 .toUri();
         return ResponseEntity.created(location).build();
+    }
+
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable int id){
+        service.deletUser(id);
     }
 }
