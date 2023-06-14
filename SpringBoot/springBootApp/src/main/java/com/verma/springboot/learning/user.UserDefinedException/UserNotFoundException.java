@@ -1,4 +1,4 @@
-package com.verma.springboot.learning.user;
+package com.verma.springboot.learning.user.UserDefinedException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
