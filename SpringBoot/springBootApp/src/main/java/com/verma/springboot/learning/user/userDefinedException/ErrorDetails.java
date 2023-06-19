@@ -1,4 +1,4 @@
-package com.verma.springboot.learning.user.UserDefinedException;
+package com.verma.springboot.learning.user.userDefinedException;
 
 import java.time.LocalDateTime;
 

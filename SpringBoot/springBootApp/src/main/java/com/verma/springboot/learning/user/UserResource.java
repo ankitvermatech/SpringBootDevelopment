@@ -1,7 +1,7 @@
 package com.verma.springboot.learning.user;
 
-import com.verma.springboot.learning.user.UserDefinedException.UserNotFoundException;
-import org.springframework.http.HttpStatus;
+import com.verma.springboot.learning.user.userDefinedException.UserNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -33,7 +33,7 @@ public class UserResource {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> adduser(@RequestBody User user){
+    public ResponseEntity<User> adduser(@Valid @RequestBody User user){
         User savedUser = service.saveUser(user);
         java.net.URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").
