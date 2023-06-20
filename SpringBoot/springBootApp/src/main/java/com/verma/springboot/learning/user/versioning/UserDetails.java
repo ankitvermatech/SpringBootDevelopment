@@ -1,4 +1,4 @@
-package com.verma.springboot.learning.user.Versioning;
+package com.verma.springboot.learning.user.versioning;
 
 public class UserDetails {
     private String name;

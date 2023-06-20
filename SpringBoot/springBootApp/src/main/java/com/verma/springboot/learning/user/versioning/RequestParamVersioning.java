@@ -1,4 +1,4 @@
-package com.verma.springboot.learning.user.Versioning;
+package com.verma.springboot.learning.user.versioning;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
