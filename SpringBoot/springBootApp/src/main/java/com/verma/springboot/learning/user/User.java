@@ -1,17 +1,24 @@
 package com.verma.springboot.learning.user;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
-
+@Entity(name="user_details")
 public class User {
+    @Id
+    @GeneratedValue
     private Integer id;
     @Size(min=2,message = "Size should have minimum of 2 characters")
     private String name;
     @Past
     private LocalDate birthDate;
 
+    public User() {
+    }
     public User(Integer id, String name, LocalDate birthDate) {
         this.id = id;
         this.name = name;
