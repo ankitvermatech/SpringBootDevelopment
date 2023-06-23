@@ -1,12 +1,16 @@
 package com.verma.springboot.learning.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity(name="user_details")
 public class User {
     @Id
@@ -17,6 +21,9 @@ public class User {
     @Past
     private LocalDate birthDate;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Posts> posts;
     public User() {
     }
     public User(Integer id, String name, LocalDate birthDate) {
@@ -47,6 +54,14 @@ public class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public List<Posts> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Posts> posts) {
+        this.posts = posts;
     }
 
     @Override
