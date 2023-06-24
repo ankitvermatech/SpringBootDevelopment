@@ -16,24 +16,24 @@ import java.util.Optional;
 public class UserJpaResource {
 
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRepository;
 
     @Autowired
     private PostRepository postRepository;
 
-    public UserJpaResource(UserRepository repository, PostRepository postRepository) {
-        this.repository = repository;
+    public UserJpaResource(UserRepository userRepository, PostRepository postRepository) {
+        this.userRepository = userRepository;
         this.postRepository = postRepository;
     }
 
     @GetMapping("/jpa/users")
     public List<User> retrieveAllUsers(){
-        return repository.findAll();
+        return userRepository.findAll();
     }
 
     @GetMapping("/jpa/users/{id}")
     public EntityModel<User> retrieveUser(@PathVariable int id){
-        Optional<User> user = repository.findById(id);
+        Optional<User> user = userRepository.findById(id);
         if(user.isEmpty()){
             throw new UserNotFoundException("Id: "+id);
         }
@@ -45,12 +45,12 @@ public class UserJpaResource {
 
     @DeleteMapping("/jpa/users/{id}")
     public void deleteUser(@PathVariable int id){
-        repository.deleteById(id);
+        userRepository.deleteById(id);
     }
 
     @GetMapping("/jpa/users/{id}/posts")
     public List<Posts> retrievePostForAUser(@PathVariable int id){
-        Optional<User> user = repository.findById(id);
+        Optional<User> user = userRepository.findById(id);
         if(user.isEmpty()){
             throw new UserNotFoundException("Id: "+id);
         }
@@ -59,7 +59,7 @@ public class UserJpaResource {
 
     @PostMapping("/jpa/users/{id}/posts")
     public ResponseEntity<User> createPostForUser(@PathVariable int id, @Valid @RequestBody Posts post){
-        Optional<User> user = repository.findById(id);
+        Optional<User> user = userRepository.findById(id);
         if(user.isEmpty()){
             throw new UserNotFoundException("Id: "+id);
         }
